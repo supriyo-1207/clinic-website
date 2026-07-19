@@ -3,7 +3,7 @@ export const clinic = {
 
   tagline: "Healthy Skin Starts Here",
 
-  phone: "+919999999999",
+  phone: "+91 7872899280",
 
   whatsapp: "919999999999",
 

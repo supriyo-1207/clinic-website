@@ -1,20 +1,23 @@
 export const testimonials = [
   {
     id: 1,
-    name: "Priya Sharma",
+    name: "Client Name",
+    treatment: "IV Therapy",
     review:
-      "Excellent treatment and very professional staff. My acne has improved significantly after just a few sessions.",
+      "Placeholder testimonial. Replace this with a genuine client review before publishing the website.",
   },
   {
     id: 2,
-    name: "Rahul Das",
+    name: "Client Name",
+    treatment: "Skin Rejuvenation",
     review:
-      "The doctor explained every step of the treatment. The clinic is clean, modern, and highly recommended.",
+      "Placeholder testimonial. Replace this with a genuine client review before publishing the website.",
   },
   {
     id: 3,
-    name: "Sneha Roy",
+    name: "Client Name",
+    treatment: "Aesthetic Treatment",
     review:
-      "I visited for pigmentation treatment and I'm extremely happy with the results. Thank you!",
+      "Placeholder testimonial. Replace this with a genuine client review before publishing the website.",
   },
 ];
