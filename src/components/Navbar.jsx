@@ -1,22 +1,68 @@
-import { useState } from "react";
-import {
-  Menu,
-  X,
-  Phone,
-  Clock3,
-} from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X, Phone, Clock3 } from "lucide-react";
 import { clinic } from "../data/clinic";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Treatments", href: "#services" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Treatments", id: "services" },
+  { label: "Testimonials", id: "testimonials" },
+  { label: "Contact", id: "contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  // Smooth Scroll
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+
+    if (section) {
+      const navbarOffset = 110;
+
+      const elementPosition =
+        section.getBoundingClientRect().top + window.pageYOffset;
+
+      const offsetPosition = elementPosition - navbarOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+
+    setIsOpen(false);
+  };
+
+  // Highlight active menu while scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 150;
+
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
+
+        if (!section) return;
+
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection(link.id);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -38,17 +84,20 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Navbar */}
 
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+
         <div className="max-w-7xl mx-auto px-6">
 
-          <div className="h-20 flex justify-between items-center">
+          <div className="h-20 flex items-center justify-between">
 
             {/* Logo */}
 
-            <a href="#home" className="flex flex-col">
-
+            <button
+              onClick={() => scrollToSection("home")}
+              className="flex flex-col text-left"
+            >
               <span className="text-2xl font-bold text-teal-700">
                 {clinic.name}
               </span>
@@ -56,21 +105,33 @@ export default function Navbar() {
               <span className="text-xs text-gray-500">
                 IV Therapy & Aesthetic Clinic
               </span>
+            </button>
 
-            </a>
-
-            {/* Desktop Navigation */}
+            {/* Desktop Menu */}
 
             <div className="hidden lg:flex items-center gap-8">
 
               {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="font-medium text-gray-700 hover:text-teal-700 transition"
+
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className={`font-medium transition duration-300 relative
+
+                  ${
+                    activeSection === link.id
+                      ? "text-teal-700"
+                      : "text-gray-700 hover:text-teal-700"
+                  }`}
                 >
                   {link.label}
-                </a>
+
+                  {activeSection === link.id && (
+                    <span className="absolute left-0 -bottom-2 h-[2px] w-full bg-teal-700 rounded-full"></span>
+                  )}
+
+                </button>
+
               ))}
 
             </div>
@@ -79,26 +140,29 @@ export default function Navbar() {
 
             <div className="hidden lg:block">
 
-              <a
-                href="#contact"
-                className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-3 rounded-full font-semibold transition"
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-3 rounded-full font-semibold transition duration-300 hover:scale-105"
               >
                 Book Consultation
-              </a>
+              </button>
 
             </div>
 
             {/* Mobile Button */}
 
             <button
-              className="lg:hidden"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Menu"
+              className="lg:hidden p-2 transition-transform duration-300"
             >
-              {isOpen ? (
-                <X size={28} />
-              ) : (
-                <Menu size={28} />
-              )}
+              <div
+                className={`transition-all duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              >
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </div>
             </button>
 
           </div>
@@ -107,38 +171,46 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
 
-        {isOpen && (
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out
 
-          <div className="lg:hidden bg-white border-t">
+          ${
+            isOpen
+              ? "max-h-[500px] opacity-100 border-t"
+              : "max-h-0 opacity-0"
+          }`}
+        >
 
-            <div className="px-6 py-6 flex flex-col gap-5">
+          <div className="bg-white px-6 py-6 flex flex-col gap-5">
 
-              {navLinks.map((link) => (
+            {navLinks.map((link) => (
 
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-gray-700 font-medium hover:text-teal-700"
-                >
-                  {link.label}
-                </a>
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className={`text-left font-medium transition
 
-              ))}
-
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="mt-2 bg-teal-700 text-white py-3 rounded-full text-center font-semibold"
+                ${
+                  activeSection === link.id
+                    ? "text-teal-700"
+                    : "text-gray-700"
+                }`}
               >
-                Book Consultation
-              </a>
+                {link.label}
+              </button>
 
-            </div>
+            ))}
+
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="mt-2 bg-teal-700 hover:bg-teal-800 text-white py-3 rounded-full font-semibold transition"
+            >
+              Book Consultation
+            </button>
 
           </div>
 
-        )}
+        </div>
 
       </nav>
     </>

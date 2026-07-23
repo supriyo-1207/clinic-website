@@ -1,59 +1,68 @@
 import {
+  Stethoscope,
+  Droplets,
   ShieldCheck,
-  Sparkles,
   HeartHandshake,
-  Clock3,
 } from "lucide-react";
 
 const reasons = [
   {
-    icon: ShieldCheck,
-    title: "Certified Medical Experts",
+    icon: Stethoscope,
+    title: "Qualified Healthcare Professionals",
     description:
-      "Our experienced professionals provide safe, evidence-based treatments tailored to your individual needs.",
+      "Every therapy is administered by trained healthcare professionals who prioritize your safety, comfort, and overall wellness throughout your visit.",
   },
   {
-    icon: Sparkles,
-    title: "Advanced Technology",
+    icon: Droplets,
+    title: "Premium IV Wellness Therapies",
     description:
-      "We use modern equipment and clinically proven techniques for effective aesthetic and wellness treatments.",
+      "Our carefully selected IV formulations contain high-quality vitamins, antioxidants, minerals, and hydration support tailored to your wellness goals.",
   },
   {
     icon: HeartHandshake,
-    title: "Personalized Patient Care",
+    title: "Personalized Treatment Plans",
     description:
-      "Every consultation begins with understanding your goals to create a treatment plan designed specifically for you.",
+      "No two clients are the same. We take time to understand your lifestyle and wellness needs before recommending the most suitable IV therapy.",
   },
   {
-    icon: Clock3,
-    title: "Comfort & Convenience",
+    icon: ShieldCheck,
+    title: "Safe, Comfortable & Hygienic Care",
     description:
-      "Flexible appointment scheduling in a clean, relaxing, and patient-focused environment.",
+      "We maintain high standards of hygiene and patient care, providing a calm, relaxing environment where your well-being always comes first.",
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50 py-24">
+    <section
+      id="why-choose-us"
+      className="bg-gradient-to-b from-white to-gray-50 py-24"
+    >
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="text-center max-w-3xl mx-auto">
+        {/* Heading */}
 
-          <span className="text-teal-700 font-semibold uppercase tracking-widest">
-            Why Choose Nikora
+        <div className="max-w-3xl mx-auto text-center">
+
+          <span className="inline-block rounded-full bg-teal-100 px-5 py-2 text-sm font-semibold text-teal-700">
+            Why Choose Nikora Aesthetics
           </span>
 
-          <h2 className="mt-3 text-4xl font-bold text-gray-900">
-            Excellence in Every Treatment
+          <h2 className="mt-5 text-4xl md:text-5xl font-bold text-gray-900">
+            Your Trusted Partner in
+            <span className="text-teal-700"> IV Wellness </span>
+            & Aesthetic Care
           </h2>
 
-          <p className="mt-5 text-lg text-gray-600 leading-8">
-            We combine medical expertise, innovative technology, and compassionate
-            care to deliver treatments that prioritize your health, confidence,
-            and long-term well-being.
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            We combine professional healthcare expertise, premium IV therapies,
+            and personalized care to help you feel refreshed, energized, and
+            confident in a safe clinical environment.
           </p>
 
         </div>
+
+        {/* Cards */}
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
 
@@ -63,20 +72,29 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={item.title}
-                className="flex gap-5 rounded-3xl bg-white p-8 shadow-sm border border-gray-100 hover:shadow-xl transition"
+                className="group rounded-3xl bg-white border border-gray-200 p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-teal-100">
-                  <Icon className="text-teal-700" size={30} />
-                </div>
+                <div className="flex gap-5">
 
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {item.title}
-                  </h3>
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-teal-100 transition group-hover:bg-teal-700">
+                    <Icon
+                      size={30}
+                      className="text-teal-700 transition group-hover:text-white"
+                    />
+                  </div>
 
-                  <p className="mt-3 text-gray-600 leading-7">
-                    {item.description}
-                  </p>
+                  <div>
+
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-3 leading-7 text-gray-600">
+                      {item.description}
+                    </p>
+
+                  </div>
+
                 </div>
               </div>
             );

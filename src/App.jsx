@@ -8,19 +8,21 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Doctor from "./components/Doctor";
 import CTA from "./components/CTA";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      <About />
+      {/* <About /> */}
       <Products />
       <Doctor />
       <WhyChooseUs />
       <Testimonials />
-      <CTA />
+      {/* <CTA /> */}
       <Contact />
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }

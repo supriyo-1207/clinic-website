@@ -1,5 +1,5 @@
 export const clinic = {
-  name: "Glow Skin Clinic",
+  name: "IVCIAN",
 
   tagline: "Healthy Skin Starts Here",
 

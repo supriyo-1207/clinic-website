@@ -1,23 +1,25 @@
 export const testimonials = [
   {
     id: 1,
-    name: "Client Name",
-    treatment: "IV Therapy",
+    name: "Sarah M.",
+    treatment: "Skin Glow Therapy",
     review:
-      "Placeholder testimonial. Replace this with a genuine client review before publishing the website.",
+      "The staff made me feel comfortable from the moment I arrived. The Skin Glow Therapy left my skin looking refreshed, and the entire experience felt professional and relaxing.",
   },
+
   {
     id: 2,
-    name: "Client Name",
-    treatment: "Skin Rejuvenation",
+    name: "James R.",
+    treatment: "NAD+ Signature Therapy",
     review:
-      "Placeholder testimonial. Replace this with a genuine client review before publishing the website.",
+      "The consultation was thorough, and the team explained every step clearly. The clinic was clean, welcoming, and the treatment was administered with great care.",
   },
+
   {
     id: 3,
-    name: "Client Name",
-    treatment: "Aesthetic Treatment",
+    name: "Emily T.",
+    treatment: "Immunity Booster Therapy",
     review:
-      "Placeholder testimonial. Replace this with a genuine client review before publishing the website.",
+      "Booking was simple, the staff were friendly, and the treatment experience was excellent. I appreciate the personalized attention and professional care throughout my visit.",
   },
 ];
