@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Phone, Clock3 } from "lucide-react";
 import { clinic } from "../data/clinic";
-
+import logo from "../assets/images/logo.png";
 const navLinks = [
   { label: "Home", id: "home" },
   // { label: "About", id: "about" },
@@ -96,7 +96,7 @@ export default function Navbar() {
 
             {/* Logo */}
 
-            <button
+            {/* <button
               onClick={() => scrollToSection("home")}
               className="flex flex-col text-left"
             >
@@ -107,6 +107,29 @@ export default function Navbar() {
               <span className="text-xs text-gray-500">
                 IV Therapy & Aesthetic Clinic
               </span>
+            </button> */}
+
+            {/* Logo with Image and Text */}
+            <button
+              onClick={() => scrollToSection("home")}
+              className="flex items-center gap-3"
+            >
+              {/* Logo */}
+              <img
+                src={logo}
+                alt={clinic.name}
+                className="h-16 w-16 rounded-full object-cover"
+              />
+              {/* Text */}
+              <div className="flex flex-col text-left">
+                <span className="text-2xl font-bold text-teal-700">
+                  {clinic.name}
+                </span>
+
+                <span className="text-xs text-gray-500">
+                  IV Therapy & Aesthetic Clinic
+                </span>
+              </div>
             </button>
 
             {/* Desktop Menu */}
@@ -120,11 +143,10 @@ export default function Navbar() {
                   onClick={() => scrollToSection(link.id)}
                   className={`font-medium transition duration-300 relative
 
-                  ${
-                    activeSection === link.id
+                  ${activeSection === link.id
                       ? "text-teal-700"
                       : "text-gray-700 hover:text-teal-700"
-                  }`}
+                    }`}
                 >
                   {link.label}
 
@@ -159,9 +181,8 @@ export default function Navbar() {
               className="lg:hidden p-2 transition-transform duration-300"
             >
               <div
-                className={`transition-all duration-300 ${
-                  isOpen ? "rotate-180" : ""
-                }`}
+                className={`transition-all duration-300 ${isOpen ? "rotate-180" : ""
+                  }`}
               >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
               </div>
@@ -176,11 +197,10 @@ export default function Navbar() {
         <div
           className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out
 
-          ${
-            isOpen
+          ${isOpen
               ? "max-h-[500px] opacity-100 border-t"
               : "max-h-0 opacity-0"
-          }`}
+            }`}
         >
 
           <div className="bg-white px-6 py-6 flex flex-col gap-5">
@@ -192,11 +212,10 @@ export default function Navbar() {
                 onClick={() => scrollToSection(link.id)}
                 className={`text-left font-medium transition
 
-                ${
-                  activeSection === link.id
+                ${activeSection === link.id
                     ? "text-teal-700"
                     : "text-gray-700"
-                }`}
+                  }`}
               >
                 {link.label}
               </button>
