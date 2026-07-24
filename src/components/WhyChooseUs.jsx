@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
         <div className="max-w-3xl mx-auto text-center">
 
           <span className="inline-block rounded-full bg-teal-100 px-5 py-2 text-sm font-semibold text-teal-700">
-            Why Choose Nikora Aesthetics
+            Why Choose IVCIAN Aesthetics
           </span>
 
           <h2 className="mt-5 text-4xl md:text-5xl font-bold text-gray-900">

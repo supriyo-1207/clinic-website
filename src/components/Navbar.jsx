@@ -4,8 +4,10 @@ import { clinic } from "../data/clinic";
 
 const navLinks = [
   { label: "Home", id: "home" },
-  { label: "About", id: "about" },
+  // { label: "About", id: "about" },
   { label: "Treatments", id: "services" },
+  { label: "How It Works", id: "how-it-works" },
+  { label: "Why Choose Us", id: "why-choose-us" },
   { label: "Testimonials", id: "testimonials" },
   { label: "Contact", id: "contact" },
 ];

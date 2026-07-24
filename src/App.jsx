@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Doctor from "./components/Doctor";
 import CTA from "./components/CTA";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import HowItWorks from "./components/HowItWorks";
 function App() {
   return (
     <>
@@ -16,7 +17,8 @@ function App() {
       <Hero />
       {/* <About /> */}
       <Products />
-      <Doctor />
+      {/* <Doctor /> */}
+      <HowItWorks />
       <WhyChooseUs />
       <Testimonials />
       {/* <CTA /> */}
